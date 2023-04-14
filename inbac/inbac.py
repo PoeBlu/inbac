@@ -45,7 +45,8 @@ class Application(tk.Frame):
         self.current_file = 0
 
         self.master.geometry(
-            str(self.args.window_size[0]) + "x" + str(self.args.window_size[1]))
+            f"{str(self.args.window_size[0])}x{str(self.args.window_size[1])}"
+        )
         self.master.update()
         self.display_image_on_canvas(self.images[self.current_file])
         self.image_canvas.bind('<Configure>', self.on_resize)
@@ -110,7 +111,7 @@ class Application(tk.Frame):
         self.update_window_title()
 
     def previous_image(self, event=None):
-        if self.current_file - 1 < 0:
+        if self.current_file < 1:
             return
         self.current_file -= 1
         self.display_image_on_canvas(self.images[self.current_file])
